@@ -3,8 +3,7 @@ const coberturaData = {"AGUASCALIENTES": ["AGUASCALIENTES", "JESÚS MARÍA"],
                        "COAHUILA DE ZARAGOZA": ["RAMOS ARIZPE", "SALTILLO"],
                        "GUANAJUATO": ["LEÓN"], 
                        "GUERRERO": ["ACAPULCO DE JUÁREZ"],
-                       "HIDALGO": ["MINERAL DE LA REFORMA",
-                       "PACHUCA DE SOTO"],
+                       "HIDALGO": ["MINERAL DE LA REFORMA","PACHUCA DE SOTO"],
                        "JALISCO": ["EL SALTO", "GUADALAJARA", "PUERTO VALLARTA", "SAN PEDRO TLAQUEPAQUE", "TLAJOMULCO DE ZÚÑIGA", "TONALÁ", "ZAPOPAN"],
                        "MORELOS": ["CUERNAVACA", "EMILIANO ZAPATA", "JIUTEPEC", "TEMIXCO"],
                        "MÉXICO": ["ALMOLOYA DE JUÁREZ", "ATIZAPÁN", "ATIZAPÁN DE ZARAGOZA", "CALIMAYA", "CHALCO", "CHAPULTEPEC", "CHICOLOAPAN", "CHIMALHUACÁN", "COACALCO DE BERRIOZÁBAL", "CUAUTITLÁN", "CUAUTITLÁN IZCALLI", "ECATEPEC DE MORELOS", "HUIXQUILUCAN", "IXTAPALUCA", "LA PAZ", "LERMA", "MELCHOR OCAMPO", "METEPEC", "MEXICALTZINGO", "NAUCALPAN DE JUÁREZ", "NEZAHUALCÓYOTL", "TECÁMAC", "TEXCOCO", "TLALNEPANTLA DE BAZ", "TOLUCA", "TULTEPEC", "TULTITLÁN", "VALLE DE CHALCO SOLIDARIDAD", "ZINACANTEPEC", "JALTENCO", "NICOLÁS ROMERO", "SAN MATEO ATENCO", "XONACATLAN"],
@@ -20,6 +19,15 @@ const estadoSelect = document.querySelector(".my_dynamic_province");
 const municipioSelect = document.querySelector(".my_dynamic_district");
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Agrega opción por defecto al dropdown de estados
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "Selecciona un estado";
+  defaultOption.disabled = true;
+  defaultOption.selected = true;
+  estadoSelect.appendChild(defaultOption);
+
+  // Llena el select de estados
   Object.keys(coberturaData).forEach(estado => {
     const opt = document.createElement("option");
     opt.value = estado;
